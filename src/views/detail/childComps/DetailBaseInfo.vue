@@ -37,13 +37,14 @@
     }
    },
    created() {
-    console.log(this.goods)
-    console.log('111');
+    // console.log(this.goods)
+    // console.log('111');
    },
  }
 </script>
 
 <style scoped>
+
   .base-info {
     margin-top: 15px;
     padding: 0 8px;

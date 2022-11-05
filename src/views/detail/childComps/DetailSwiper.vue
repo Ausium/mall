@@ -23,6 +23,9 @@ import {Swiper, SwiperItem} from '@/components/common/swiper';
       }
     }
   },
+  mounted() {
+    
+  }
  }
 </script>
 

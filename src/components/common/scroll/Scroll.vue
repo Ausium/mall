@@ -40,7 +40,7 @@ export default {
     })
 
     // 2.监听滚动的位置
-    if (this.probeType ===2 || this.probeType === 3) {
+    if (this.probeType === 2 || this.probeType === 3) {
         this.scroll.on('scroll', (position) => {
         // console.log(position);
         this.$emit('scroll', position)
@@ -49,6 +49,7 @@ export default {
 
     // 3.监听上拉加载更多
     this.scroll.on('pullingUp', () => {
+      
       this.$emit('pullingUp')
     })
   },
@@ -56,6 +57,9 @@ export default {
     scrollTo(x, y, time = 500) {
       this.scroll.scrollTo(x, y, time)
     },
+    refresh() {
+        this.scroll && this.scroll.refresh()
+      },
     finishPullUp() {
       this.scroll && this.scroll.finishPullUp()
     },

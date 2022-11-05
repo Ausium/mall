@@ -18,6 +18,7 @@
 <script>
 import NavBar from '@/components/common/navbar/NavBar';
 
+
 export default {
   name: 'DetailNavBar',
   components: {
@@ -32,9 +33,12 @@ export default {
   methods: {
     titleIndex(index) {
       this.currentIndex = index
+      this.$emit('titleClick', index);
     },
     backClick() {
+      this.currentIndex = 0
       this.$router.go(-1)
+      
     }
   }
 }

@@ -164,14 +164,18 @@
     computed: {
       showGoods() {
         return this.goods[this.currrentType].list
+        
       }
     },
     activated() {
-      this.$refs.scroll.scroll.refresh()
+      // console.log('home enter');
+      // console.log(this.saveY);
+      this.$refs.scroll.refresh()
       this.$refs.scroll.scrollTo(0, this.saveY, 0)
       
     },
     deactivated() {
+      // console.log(this.$refs.scroll.getScrollY());
       this.saveY = this.$refs.scroll.getScrollY()
     },
   }
@@ -203,7 +207,7 @@
     position: sticky;
     top: 44px;
 
-    z-index: 9;
+    z-index: 8;
   }
  
 

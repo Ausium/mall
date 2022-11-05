@@ -47,8 +47,6 @@ export default {
     line-height: 40px; 
   }
 
-
-
   .active {
     color: var(--color-high-text);
     

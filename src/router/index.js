@@ -34,7 +34,11 @@ const routes = [
   },
   {
     path: '/detail/:iid',
-    component: Detail
+    component: Detail,
+    // meta: {
+    //   keepAlive: false, //此组件不需要被缓存
+    //   isBack: false, //用于判断上一个页面是哪个
+    // }
   }
 ]
 const router = new VueRouter({

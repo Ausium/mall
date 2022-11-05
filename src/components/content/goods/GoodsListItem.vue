@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="clickItem">
-    <img :src="goodsItem.show.img" alt="">
+    <img :src="showImages" alt="">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'GoodsListItem',
   props: {
@@ -20,15 +21,27 @@ export default {
       }
     }
   },
+  computed: {
+    showImages() {
+      // 逻辑或，如果前面为空的时候，就执行后面的
+      return this.goodsItem.img || this.goodsItem.image || this.goodsItem.show.img
+      
+    }
+  },
   methods: {
     clickItem() {
       this.$router.push('/detail/' + this.goodsItem.iid)
+      
     }
   },
+  
 }
 </script>
 
-<style>
+
+<!-- 有个bug是因为没有使用style的 scoped属性做样式的区分，
+     所以和其他使用到这个组件的样式重叠了 -->
+<style scoped>
 .goods-item {
     padding-bottom: 40px;
     position: relative;
