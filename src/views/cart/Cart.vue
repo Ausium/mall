@@ -3,17 +3,25 @@
     <nav-bar class="nav-bar">
       <div slot="center" class="center">购物车({{length}})</div>
     </nav-bar>
+
+    <!-- <CartList></CartList> -->
+    <cart-list/>
   </div>
 </template>
+
+
 
 <script>
   import NavBarVue from '@/components/common/navbar/NavBar.vue';
   import { mapGetters } from 'vuex';
+  import CartListVue from './childComps/CartList.vue';
+  
 
   export default {
     name: "Cart",
     components: {
-      NavBarVue
+      NavBarVue,
+      CartListVue
     },
     computed: {
       // cartLength() {
