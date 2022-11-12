@@ -4,7 +4,7 @@
       <div slot="center" class="center">购物车({{length}})</div>
     </nav-bar>
 
-    <!-- <CartList></CartList> -->
+    <CartList></CartList>
     <cart-list/>
   </div>
 </template>
@@ -12,16 +12,16 @@
 
 
 <script>
-  import NavBarVue from '@/components/common/navbar/NavBar.vue';
+  import NavBar from '@/components/common/navbar/NavBar';
   import { mapGetters } from 'vuex';
-  import CartListVue from './childComps/CartList.vue';
+  import CartList from './childComps/CartList';
   
 
   export default {
     name: "Cart",
     components: {
-      NavBarVue,
-      CartListVue
+      NavBar,
+      CartList
     },
     computed: {
       // cartLength() {
@@ -39,9 +39,14 @@
 </script>
 
 <style scoped>
+  .cart {
+    height: 100vh;
+  }
+  
   .nav-bar {
     background-color:  var(--color-tint);
     color: #fff;
   }
+  
   
 </style>
