@@ -1,8 +1,7 @@
 <template>
  <div class="check-button">
   <img src="../../../assets/img/cart/tick.svg" alt="" 
-       :class="{check: isChecked}"
-       >
+       :class="{check: isChecked}">
  </div>
 </template>
 
