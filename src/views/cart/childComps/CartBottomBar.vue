@@ -19,7 +19,8 @@
 <script>
 
   import CheckButton from '@/components/content/checkButton/CheckButton';
-  
+  import { debound } from '@/common/utils';
+
  export default {
   name: 'CartBottomBar',
   components: {
@@ -61,7 +62,7 @@
     },
     calcClick() {  
       if (this.isSelectAll) {
-        console.log('111');
+
         this.$toast.show('请选择购买的商品')
       }
     }

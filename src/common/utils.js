@@ -8,7 +8,6 @@ export function debound(func, delay) {
       func.apply(this, args)
     }, delay);
   }
-
 }
 
 export function formateDate (date, fmt) {

@@ -92,6 +92,7 @@
       // 时间监听相关方法
       //1.goodslist传递的自定义点击事情，子传父，让goodslist做对应的展示
       tabClick(index) {
+        console.log(index);
         switch (index) {
           case 0:
             this.currrentType = 'pop'
@@ -163,6 +164,7 @@
     },
     computed: {
       showGoods() {
+        console.log(this.goods[this.currrentType].list);
         return this.goods[this.currrentType].list
         
       }
