@@ -15,6 +15,7 @@
     </scroll>
     <detail-bottom-bar @addCart="addToCart"></detail-bottom-bar>
     <BackTop @click.native="backClick" v-show="isShowBackTop"></BackTop>
+    <toast :message = "message" :show="show"/>
   </div>
 </template>
 
@@ -32,12 +33,15 @@ import DetailBottomBar from './childComps/DetailBottomBar'
 
 import Scroll from '@/components/common/scroll/Scroll';
 import BackTop from '@/components/content/backTop/BackTop';
+// toast
+import Toast from '@/components/common/toast/Toast';
 
 // 防抖
 import {debound} from '../../common/utils'
 
 import GoodsList from '@/components/content/goods/GoodsList';
 
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Detail',
@@ -52,7 +56,8 @@ export default {
     GoodsList,
     DetailBottomBar,
     BackTop,
-    Scroll
+    Scroll,
+    Toast
     
 
   },
@@ -69,7 +74,9 @@ export default {
       themeTopYs: [],
       getThemeTops: null,
       currenIndex: 0,
-      isShowBackTop: false
+      isShowBackTop: false,
+      message: '',
+      show: false
     }
   },
   created() {
@@ -133,6 +140,8 @@ export default {
       },200)
     },
   methods: {
+    ...mapActions(['addCart']),
+
     imageLoad() {
       // this.$refs.scroll调用的是组件的对象，用组件对象调用他里面的方法，也就是BScroll的实例化对象
       // 再用实例化对象调用refresh才是正确的，不然会报refresh not a function
@@ -191,7 +200,24 @@ export default {
       // 2.将商品添加到购物车上
       // this.$store.cartList.push(product)  state不能直接push，需要经过mutations
       // this.$store.commit('addCart', product)
-      this.$store.dispatch('addCart', product)
+
+      this.addCart(product).then(res => {
+        // this.show = true
+        // this.message = res
+        // console.log(res);
+
+        // setTimeout(() => {
+        //   this.show = false
+        //   this.message = ''
+        // },1500)
+
+        this.$toast.show(res, 2000)
+        // console.log(this.$toast);
+      })
+
+      // this.$store.dispatch('addCart', product).then(res => {
+      //   console.log(res);
+      // })
     }
   }
   
