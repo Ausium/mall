@@ -4,6 +4,8 @@
       <div slot="center" class="center">个人中心</div>
     </nav-bar>
     <profile-center></profile-center>
+    <profile-wallet></profile-wallet>
+    <profile-info></profile-info>
   </div>
 </template>
 
@@ -11,12 +13,16 @@
 
 import NavBar from '@/components/common/navbar/NavBar.vue';
 import ProfileCenter from './childComps/ProfileCenter.vue'
+import ProfileWallet from './childComps/ProfileWallet.vue'
+import ProfileInfo from './childComps/ProfileInfo.vue'
 
   export default {
     name: "Profile",
     components: {
       NavBar,
-      ProfileCenter
+      ProfileCenter,
+      ProfileWallet,
+      ProfileInfo
     }
   }
 </script>
