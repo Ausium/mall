@@ -82,6 +82,21 @@
     overflow: hidden;
   }
 
+
+  .item-info .item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .item-info .item-price-left {
+    color: var(--color-tint);
+  }
+
   .item-info .item-desc {
     font-size: 14px;
     color: #666;

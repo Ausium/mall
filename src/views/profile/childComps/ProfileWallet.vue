@@ -37,9 +37,10 @@
 
  .wallet-info {
   display: flex;
-  position: relative;
+  /* position: relative; */
   font-size: 13px;
   border-bottom: 15px solid #eee;
+  overflow: hidden; 
  }
  .flex {
   flex: 1;

@@ -164,7 +164,7 @@
     },
     computed: {
       showGoods() {
-        console.log(this.goods[this.currrentType].list);
+        // console.log(this.goods[this.currrentType].list);
         return this.goods[this.currrentType].list
         
       }

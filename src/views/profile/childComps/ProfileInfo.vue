@@ -33,9 +33,6 @@
 </script>
 
 <style scoped>
-  .center-info {
-    
-  }
 
  .center-info img {
   margin: 15px 15px 0px;

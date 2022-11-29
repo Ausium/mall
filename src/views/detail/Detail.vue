@@ -96,6 +96,7 @@ export default {
 
     // 2.根据iid请求详情数据
     getDetail(this.iid).then(res => {
+      // console.log(res);
       const data = res.result
       console.log(data);
       // 1.获取顶部轮播图数据

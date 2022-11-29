@@ -33,5 +33,4 @@ import ProfileInfo from './childComps/ProfileInfo.vue'
     background-color:  var(--color-tint);
     color: #fff;
   }
-
 </style>
