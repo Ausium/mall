@@ -42,7 +42,6 @@
     height: calc(100% - 44px - 49px - 40px);
   }
   .content {
-     
      height: 100%;
      overflow: hidden;
   }

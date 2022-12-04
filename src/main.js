@@ -5,6 +5,7 @@ import store from './store'
 
 import  FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
+import vuescroll from 'vuescroll'
 
 import toast from './components/common/toast'
 
@@ -18,6 +19,13 @@ Vue.use(VueLazyload)
 
 // 解决移动端300ms的延迟
 // FastClick.attach(document.body)
+
+Vue.use(vuescroll); // install the vuescroll first
+Vue.prototype.$vuescrollConfig = {
+  bar: {
+    background: '#000'
+  }
+};
 
 
 
