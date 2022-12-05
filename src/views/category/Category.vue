@@ -10,6 +10,10 @@
             :pull-up-load="true"
             :probe-type="3">
       <category-sub :subCategoryList="subCategoryList"></category-sub>
+      <tab-control :titles="TabControlTitle"
+                   @tabClick="tabClick"
+                   ref="tabControl"></tab-control>
+      <goods-list :goods="subTypeData"></goods-list>
     </scroll>
     <!-- <category-sub :subCategoryList="subCategoryList"></category-sub> -->
     
@@ -20,11 +24,14 @@
 import BSscroll from 'better-scroll'
 import Scroll from '@/components/common/scroll/Scroll.vue'
 import NavBar from '@/components/common/navbar/NavBar.vue'
+import TabControl from '@/components/content/tabControl/TabControl.vue'
+import GoodsList from '@/components/content/goods/GoodsList.vue'
+
 import CategorySiderbar from './childComps/CategorySiderbar.vue'
 import CategorySub from './childComps/CategorySub.vue'
 
 
-import { getCategory, getSubCategory } from '@/network/category'
+import { getCategory, getSubCategory, getSubCategoryDetail } from '@/network/category'
 
 export default {
   name: "Category",
@@ -32,6 +39,8 @@ export default {
     BSscroll,
     Scroll,
     NavBar,
+    TabControl,
+    GoodsList,
     CategorySiderbar,
     CategorySub
   },
@@ -41,7 +50,18 @@ export default {
       Result: null,
       maitKey: null,
       SiderbarList: [],
-      subCategoryList: null
+      TabControlTitle: ['流行','新款','精选'],
+      //储存一下tabcontrol类型，拿到不同tabControl索引请求不同数据
+      typeStyle:['pop','new','sell'],
+      subGoodsType: 0,
+      subTypeData: null,
+      subCategoryList: null,
+      //拿到当前所处分类，以便后面根据分类拿到type数据
+      currentTypeIndex: 0,
+      // subGoods数据
+      miniWallkey: null
+
+      
     }
   },
   created() {
@@ -50,6 +70,7 @@ export default {
 
     // 2.请求侧边栏的分类数据
     // this.getSubCategory(this.maitKey)
+    
   },
   methods: {
 
@@ -61,28 +82,40 @@ export default {
         // 这个是进入分类时，能先请求一次正在流行的数据展示出来
         this.SiderbarList = res.data.category.list[0].maitKey
         this.sidebarClick(this.SiderbarList)
-
+        
         // 这个是获取所有的sidebar的数据
         this.SiderbarList = res.data.category.list
-
       })
     },
 
-    // getSubCategory(maitKey) {
-    //   getSubCategory(maitKey).then(res => {
-    //     console.log(res);
-    //   })
-    // },
     async getSubCategory(maitKey) {
 
       const res = await getSubCategory(maitKey)
       this.subCategoryList = res.data.list
-      // console.log(this.subCategoryList);
+
+      //这是展示第一次分类后，不用点击就可以直接展示流行的goodsItem
+      this.tabClick(this.currentTypeIndex)
+    },
+
+    async getSubCategoryDetail() {
+      const res = await getSubCategoryDetail(this.miniWallkey, this.subGoodsType)
+      this.subTypeData = res
+      // console.log(this.subTypeData);
     },
 
     sidebarClick(maitKey) {
       this.getSubCategory(maitKey)
+      
 
+    },
+    tabClick(index) {
+      
+      this.currentTypeIndex = index
+      
+      this.miniWallkey = this.SiderbarList[this.currentTypeIndex].miniWallkey
+      this.subGoodsType = this.typeStyle[this.currentTypeIndex]
+    
+      this.getSubCategoryDetail() 
     }
 
   }

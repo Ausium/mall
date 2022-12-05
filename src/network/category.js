@@ -15,3 +15,14 @@ export async function getSubCategory(maitKey) {
   })
   return res
 }
+
+export async function getSubCategoryDetail(miniWallkey, type) {
+  const res = await request({
+    url: "/subcategory/detail",
+    params: {
+      miniWallkey,
+      type
+    }
+  })
+  return res
+}
