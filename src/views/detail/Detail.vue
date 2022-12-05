@@ -18,7 +18,6 @@
     <toast :message = "message" :show="show"/>
   </div>
 </template>
-
 <script>
 import DetailNavBar from './childComps/DetailNavBar';
 import { getDetail, Goods, Shop, GoodsParam ,getRecommend} from '@/network/detail';

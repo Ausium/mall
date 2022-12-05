@@ -5,8 +5,8 @@
     <template>
       <ul class="sider-bar">
         <li v-for="(item, index) in SiderbarList" :key="index" class="sider-item-bar"
-          :class="{ active: index === isActive }" @click="sidebarClick(index, item.maitKey)">
-          {{ item.title }}
+          :class="{ active: index === isActive }" @click="sidebarClick(item, index)">
+          {{ item.title}}
         </li>
       </ul>
     </template>
@@ -39,9 +39,9 @@ export default {
   },
 
   methods: {
-    sidebarClick(index, maitKey) {
+    sidebarClick(item, index) {
       this.isActive = index
-      this.$emit('sidebarClick', maitKey)
+      this.$emit('sidebarClick', index)
     },
     imageLoad() {
       console.log('--------------');
